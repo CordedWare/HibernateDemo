@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data // Это POJO сущность (геттеры, сеттеры, хеш-код, эквалс, ту-стринг, конструкторы и т.д.)
@@ -22,9 +20,9 @@ public class User {
     private String username;
     private String firstname;
     private String lastname;
-
-//    @Column(name = "birth_date")  добавляем, чтобы название нашей переменной совпадало с названием поля в БД, но т.к. мы определили setPhysicalNamingStrategy(), то это делать необязательно
+    @Column(name = "birth_date")  // добавляем, чтобы название нашей переменной совпадало с названием поля в БД, но т.к. мы определили setPhysicalNamingStrategy(), то это делать необязательно
     private LocalDate birthDate;
     private Integer age;
+    @Enumerated(EnumType.STRING)
     private Role role;
 }
